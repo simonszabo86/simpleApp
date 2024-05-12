@@ -36,4 +36,27 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --base-href /simpleApp/
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "dist/simpleApp/browser/"
+
+  # Deployment job
+  deploy:
+    environment:
+      name: simpleApp
+      url: ${{steps.deploayment.outputs.page_url}}
+    runs-on: ubuntu-latest
+    needs: build
+    # Grant GITHUB_TOKEN the permission required to make a Pages deploayment
+    permissions:
+      pages: write  # to deploy Pages
+      id-token: write  # to verifythe deploayment originates from an appropriate source
+    steps:
+      - name: Deploy to Github Pages
+      id: deployment
+      uses: actions/deploy-pages@v2 
+
+        
+
      
