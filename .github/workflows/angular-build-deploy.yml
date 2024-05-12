@@ -45,7 +45,7 @@ jobs:
   deploy:
     environment:
       name: simpleApp
-      url: ${{steps.deploayment.outputs.page_url}}
+      url: ${{steps.deployment.outputs.page_url}}
     runs-on: ubuntu-latest
     needs: build
     # Grant GITHUB_TOKEN the permission required to make a Pages deploayment
@@ -54,8 +54,8 @@ jobs:
       id-token: write  # to verifythe deploayment originates from an appropriate source
     steps:
       - name: Deploy to Github Pages
-      id: deployment
-      uses: actions/deploy-pages@v2 
+        id: deployment
+        uses: actions/deploy-pages@v2 
 
         
 
