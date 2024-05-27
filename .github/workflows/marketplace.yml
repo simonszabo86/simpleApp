@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@2
+      uses: actions/checkout@v4.1.5
     - name: Python Syntax Checker
       uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
           
